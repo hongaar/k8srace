@@ -1,8 +1,6 @@
 import { Route, Switch } from "wouter"
-import { Admin } from "./Admin"
-import { Exercises } from "./Exercises"
-import { Session } from "./Session"
-import { Workshops } from "./Workshops"
+import { Session } from "./components"
+import { Admin, Exercises, Workshops } from "./pages"
 
 export function App() {
   console.debug("Rendering App")

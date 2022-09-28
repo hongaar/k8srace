@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 import { initWakelock } from "./api"
-import { App } from "./components/App"
+import { App } from "./App"
 import { FirebaseProvider, SessionProvider } from "./context"
 import "./index.scss"
 import reportWebVitals from "./reportWebVitals"

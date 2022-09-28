@@ -4,7 +4,54 @@ body,
 button,
 input {
   font-family: "Noto Sans Mono", monospace;
+  text-align: center;
 }
+
+/* pages */
+
+.exercises {
+  h1 {
+    .prefix {
+      font-weight: normal;
+    }
+  }
+
+  button.finish {
+    width: 100%;
+    font-size: 3rem;
+    height: 50vh;
+    background-color: lightgreen;
+  }
+}
+
+.admin {
+  button {
+    &.active {
+      font-weight: bold;
+    }
+  }
+
+  table {
+    display: inline-block;
+
+    tr {
+      &.active {
+        font-weight: bold;
+      }
+
+      &.started {
+        color: gray;
+      }
+    }
+
+    th,
+    td {
+      text-align: left;
+    }
+  }
+}
+
+/* components */
 
 .session {
   display: flex;
@@ -17,62 +64,64 @@ input {
   }
 }
 
-.exercises {
-  h1 {
-    .prefix {
-      font-weight: normal;
-    }
-  }
-
-  .player-list {
-    ul {
-      margin: 0;
-      padding: 0;
-
-      li {
-        list-style: none;
-        margin: 0 0 1rem 0;
-
-        .emoji-spacer {
-          display: inline-block;
-          width: 1.3rem;
-        }
-
-        .badge-spacer {
-          display: inline-block;
-          width: 10rem;
-        }
-
-        .badge {
-          margin: 0 0.2rem;
-          padding: 0.2rem 0.4rem;
-          border-radius: 0.5rem;
-        }
-
-        &.active {
-          font-weight: bold;
-        }
-      }
-    }
-  }
-
-  button.finish {
-    width: 100%;
-    font-size: 3rem;
-    height: 10rem;
-    background-color: lightgreen;
-  }
-}
-
-.admin {
+.player-list {
   ul {
+    margin: 2rem 0 0 0;
+    padding: 0;
+
     li {
+      list-style: none;
+      margin: 0 0 1rem 0;
+
+      font-size: 1.5rem;
+
+      animation: appear 1s linear;
+      animation-delay: 10s;
+      animation-fill-mode: both;
+
+      &:nth-child(1) {
+        animation-delay: 0s;
+      }
+      &:nth-child(2) {
+        animation-delay: 2s;
+      }
+      &:nth-child(3) {
+        animation-delay: 4s;
+      }
+      &:nth-child(4) {
+        animation-delay: 6s;
+      }
+      &:nth-child(5) {
+        animation-delay: 8s;
+      }
+
+      .emoji {
+        display: inline-block;
+        margin: 0 0.5rem;
+      }
+
+      .badge {
+        margin: 0 1rem;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.5rem;
+      }
+
       &.active {
         font-weight: bold;
       }
-      &.started {
-        color: gray;
-      }
     }
+  }
+}
+
+/* animations */
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }

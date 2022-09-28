@@ -1,10 +1,10 @@
-import { AddId, Collection, Doc } from "./schema"
+import { Collection, Doc, DocWithId } from "./schema"
 
 const MAX_SCORE_PER_EXERCISE = 1000
 
 export const hasScore = (
   activeExercise: string,
-  session?: Doc[Collection.Sessions]
+  session?: Doc<Collection.Sessions>
 ) => {
   return typeof session !== "undefined" &&
     typeof session?.scores !== "undefined"
@@ -14,7 +14,7 @@ export const hasScore = (
 
 export const sortSessionsForExercise =
   (activeExercise: string) =>
-  (a: Doc[Collection.Sessions], b: Doc[Collection.Sessions]) => {
+  (a: Doc<Collection.Sessions>, b: Doc<Collection.Sessions>) => {
     if (
       typeof a.scores !== "undefined" &&
       typeof a.scores[activeExercise] !== "undefined" &&
@@ -42,8 +42,8 @@ export const sortSessionsForExercise =
   }
 
 export const calculateTotalScore = (
-  exercises: AddId<Doc[Collection.Exercises]>[],
-  sessions: AddId<Doc[Collection.Sessions]>[]
+  exercises: DocWithId<Collection.Exercises>[],
+  sessions: DocWithId<Collection.Sessions>[]
 ) => {
   // Build a map of total time taken for each exercise across all sessions
   const exerciseMaxTime: { [key: string]: number } = {}
@@ -61,7 +61,7 @@ export const calculateTotalScore = (
     })
   })
 
-  return (session: AddId<Doc[Collection.Sessions]>) => {
+  return (session: DocWithId<Collection.Sessions>) => {
     // Iterate each exercise in the scores, and calculate relative score based on total score for exercise
     if (typeof session.scores === "undefined") {
       return {

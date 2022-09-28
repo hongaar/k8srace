@@ -6,7 +6,7 @@ export enum Collection {
   Sessions = "sessions",
 }
 
-export type Doc = {
+type DocEnum = {
   [Collection.Workshops]: {
     name: string
     currentExerciseId: string | null
@@ -26,5 +26,9 @@ export type Doc = {
     }
   }
 }
+
+export type Doc<T extends Collection> = DocEnum[T]
+
+export type DocWithId<T extends Collection> = AddId<DocEnum[T]>
 
 export type AddId<T> = { id: string } & T

@@ -9,7 +9,7 @@ export function Workshops() {
 
   return (
     <div className="workshops">
-      <h1>Workshops </h1>
+      <h1>Workshops</h1>
       <ul>
         {workshops?.map((doc) => (
           <li key={doc.id}>

@@ -46,7 +46,7 @@ export function useDocRef(collectionId: Collection, docId: string) {
 
 export function useCollection<T extends Collection>(collectionId: T) {
   const collectionRef = useCollectionRef(collectionId)
-  const [snapshot, loading, error] = useBaseCollection<Doc[T]>(
+  const [snapshot, loading, error] = useBaseCollection<Doc<T>>(
     collectionRef as any
   )
 
@@ -66,7 +66,7 @@ export function useQuery<T extends Collection>(
   ...queryConstraints: QueryConstraint[]
 ) {
   const collectionRef = useCollectionRef(collectionId)
-  const [snapshot, loading, error] = useBaseCollection<Doc[T]>(
+  const [snapshot, loading, error] = useBaseCollection<Doc<T>>(
     query(collectionRef as any, ...queryConstraints)
   )
 
@@ -86,7 +86,7 @@ export function useDocument<T extends Collection>(
   docId: string
 ) {
   const docRef = useDocRef(collectionId, docId)
-  const [data, loading, error] = useBaseDocument<Doc[T]>(docRef as any)
+  const [data, loading, error] = useBaseDocument<Doc<T>>(docRef as any)
 
   if (error) {
     console.error(error)
@@ -103,7 +103,7 @@ export function useDocWriter<T extends Collection>(collectionId: T) {
   const collectionRef = useCollectionRef(collectionId)
 
   return useCallback(
-    async function (docId: string, data: Partial<Doc[T]>) {
+    async function (docId: string, data: Partial<Doc<T>>) {
       await setDoc(doc(collectionRef, docId), data, { merge: true })
     },
     [collectionRef]
