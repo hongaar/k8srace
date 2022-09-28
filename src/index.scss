@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@400;700&display=swap");
+
+body,
+button,
+input {
+  font-family: "Noto Sans Mono", monospace;
+}
+
+.session {
+  display: flex;
+  justify-content: flex-end;
+
+  form {
+    input {
+      width: 8rem;
+    }
+  }
+}
+
+.exercises {
+  h1 {
+    .prefix {
+      font-weight: normal;
+    }
+  }
+
+  .player-list {
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+        margin: 0 0 1rem 0;
+
+        .emoji-spacer {
+          display: inline-block;
+          width: 1.3rem;
+        }
+
+        .badge-spacer {
+          display: inline-block;
+          width: 10rem;
+        }
+
+        .badge {
+          margin: 0 0.2rem;
+          padding: 0.2rem 0.4rem;
+          border-radius: 0.5rem;
+        }
+
+        &.active {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  button.finish {
+    width: 100%;
+    font-size: 3rem;
+    height: 10rem;
+    background-color: lightgreen;
+  }
+}
+
+.admin {
+  ul {
+    li {
+      &.active {
+        font-weight: bold;
+      }
+      &.started {
+        color: gray;
+      }
+    }
+  }
+}

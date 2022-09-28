@@ -1,15 +1,20 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
+import { initWakelock } from "./api"
 import { App } from "./components/App"
-import { FirebaseProvider } from "./context"
-import "./index.css"
+import { FirebaseProvider, SessionProvider } from "./context"
+import "./index.scss"
 import reportWebVitals from "./reportWebVitals"
+
+initWakelock()
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
     <FirebaseProvider>
-      <App />
+      <SessionProvider>
+        <App />
+      </SessionProvider>
     </FirebaseProvider>
   </React.StrictMode>
 )

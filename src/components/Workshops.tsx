@@ -1,15 +1,19 @@
+import { Link } from "wouter"
 import { Collection } from "../api"
-import { useLiveCollection } from "../hooks"
+import { useCollection } from "../hooks"
 
 export function Workshops() {
-  const workshops = useLiveCollection(Collection.Workshops)
+  console.debug("Rendering Workshops")
+
+  const workshops = useCollection(Collection.Workshops)
 
   return (
     <div className="workshops">
+      <h1>Workshops </h1>
       <ul>
         {workshops?.map((doc) => (
-          <li>
-            {doc.id}: {doc.name}
+          <li key={doc.id}>
+            <Link href={`/${doc.id}`}>{doc.name}</Link>
           </li>
         ))}
       </ul>

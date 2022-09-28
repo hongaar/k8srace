@@ -1,4 +1,6 @@
+export * from "./Admin"
 export * from "./App"
+export * from "./Exercises"
 export * from "./Loading"
-export * from "./Users"
+export * from "./Session"
 export * from "./Workshops"
