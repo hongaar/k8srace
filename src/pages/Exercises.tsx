@@ -31,7 +31,7 @@ export function Exercises({ params }: { params: { workshop: string } }) {
           {activeSession ? (
             hasFinished ? (
               <>
-                <h2>💪 You made it, well done!</h2>
+                <h2>💪 You made it!</h2>
                 <hr />
                 <ExerciseScores
                   activeSession={activeSession}
